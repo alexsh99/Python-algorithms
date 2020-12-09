@@ -1,0 +1,25 @@
+import random
+
+SIZE = 10
+MIN_ITEM = -10
+MAX_ITEM = 10
+array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
+print(f"исходный массив {array}")
+
+min_elem_pos, max_elem_pos = 0, 0  # Позиции минимального и максимального элемента
+
+for i, item in enumerate(array):
+    # Поиск позиции минимального элемента
+    if array[min_elem_pos] > item:  # Если сравнение > то позиция первого найденого элемента, если >= то последнего
+        min_elem_pos = i
+    # Поиск позиции максимального элемента
+    if array[max_elem_pos] < item:  # Если сравнение < то позиция первого найденого элемента, если <= то последнего
+        max_elem_pos = i
+# Для справки
+print(f"Позиция первого минимального элемента: {min_elem_pos}")
+print(f"Позиция первого максимального элемента: {max_elem_pos}")
+
+# меняем местами минимальный и максимальный элементы
+array[min_elem_pos], array[max_elem_pos] = array[max_elem_pos], array[min_elem_pos]
+
+print(f"массив после перемены мест элементов: {array}")
